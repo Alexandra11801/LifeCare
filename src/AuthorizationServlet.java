@@ -1,0 +1,57 @@
+import freemarker.template.Configuration;
+import freemarker.template.TemplateExceptionHandler;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Map;
+import java.util.TreeMap;
+
+@WebServlet(name = "AuthorizationServlet")
+@MultipartConfig
+public class AuthorizationServlet extends HttpServlet {
+
+	public void init(){
+		Configuration conf = new Configuration();
+		conf.setServletContextForTemplateLoading(this.getServletContext(), "/WEB-INF/templates");
+		conf.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
+		getServletContext().setAttribute("conf", conf);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		System.out.println(email);
+		System.out.println(password);
+		User user = UserDAO.findUserByEmail(email);
+		HttpSession session = request.getSession();
+		if(user == null){
+			response.sendRedirect("http://localhost:8080/authorization?user_exists=false");
+		}
+		else if(!password.equals(user.getPassword())){
+			response.sendRedirect("http://localhost:8080/authorization?correct_password=false");
+		}
+		else{
+			session.setAttribute("current_user", user);
+			response.sendRedirect("http://localhost:8080/");
+		}
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Map<String, Object> root = new TreeMap<>();
+		response.setContentType("text/html");
+		root.put("correct_password", request.getParameter("correct_password") == null ? true : Boolean.parseBoolean(request.getParameter("correct_password")));
+		root.put("user_exists", request.getParameter("user_exists") == null ? true : Boolean.parseBoolean(request.getParameter("user_exists")));
+		root.put("authorizated", false);
+		Helpers.render(request, response, "authorization.ftl", root);
+	}
+}
