@@ -4,9 +4,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import javax.xml.transform.Result;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.Map;
@@ -38,20 +36,28 @@ public class RegistrationServlet extends HttpServlet {
 			response.sendRedirect("http://localhost:8080/registration?correct_password=false");
 		}
 		else{
-			String name = request.getParameter("name");
-			String surname = request.getParameter("surname");
-			String password = request.getParameter("password");
-			String email = request.getParameter("email");
-			System.out.println(name);
-			Part filePart = request.getPart("avatar");
-			String imageName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-			InputStream avatar = filePart.getInputStream();
+			String name = (new BufferedReader(new InputStreamReader(request.getPart("name").getInputStream()))).readLine();
+			String surname = (new BufferedReader(new InputStreamReader(request.getPart("surname").getInputStream()))).readLine();
+			String password = (new BufferedReader(new InputStreamReader(request.getPart("password").getInputStream()))).readLine();
+			String email = (new BufferedReader(new InputStreamReader(request.getPart("email").getInputStream()))).readLine();
+			Part part = request.getPart("avatar");
+			String dirPath = getServletContext().getRealPath("") + "uploads";
+			File dir = new File(dirPath);
+			if(!dir.exists()){
+				dir.mkdir();
+			}
+			String[] data = part.getSubmittedFileName().split("\\.");
+			String extension = data[data.length - 1];
+			String image_name = (int)Math.random() * 100000000 + "." + extension;
+			String fullpath = dirPath + File.separator + image_name;
+			part.write(fullpath);
+			System.out.println(dirPath + image_name);
+			String path = File.separator + "uploads" + File.separator + image_name;
 			if(UserDAO.findUserByEmail(email) != null){
 				response.sendRedirect("http://localhost:8080/registration?user_exists=true");
 			}
 			else {
-				User newUser = new User(name, surname, password, email, avatar);
-				newUser.setImageName(imageName);
+				User newUser = new User(name, surname, password, email, path);
 				UserDAO.addUser(newUser);
 				session.setAttribute("current_user", newUser);
 				response.sendRedirect("http://localhost:8080/");

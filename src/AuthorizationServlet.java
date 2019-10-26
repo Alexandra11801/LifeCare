@@ -4,10 +4,7 @@ import freemarker.template.TemplateExceptionHandler;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,8 +27,6 @@ public class AuthorizationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(email);
-		System.out.println(password);
 		User user = UserDAO.findUserByEmail(email);
 		HttpSession session = request.getSession();
 		if(user == null){
@@ -41,6 +36,11 @@ public class AuthorizationServlet extends HttpServlet {
 			response.sendRedirect("http://localhost:8080/authorization?correct_password=false");
 		}
 		else{
+			if(Boolean.parseBoolean(request.getParameter("rememberMe"))){
+				Cookie cookie = new Cookie("user", Integer.toString(UserDAO.getId(user)));
+				cookie.setMaxAge(Integer.MAX_VALUE);
+				response.addCookie(cookie);
+			}
 			session.setAttribute("current_user", user);
 			response.sendRedirect("http://localhost:8080/");
 		}

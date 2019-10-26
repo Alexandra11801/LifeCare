@@ -31,10 +31,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/authorization">Войти</a>
+                        <a class="nav-link" href="/authorization">Log in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/registration">Зарегистрироваться</a>
+                        <a class="nav-link" href="/registration">Registration</a>
                     </li>
                 </ul>
             </div>
@@ -43,15 +43,15 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="${pageContext.request.contextPath}/images/${user.getImageName()}" alt=""> <@user.getName()/>
+                            <img src="${current_user.getImagePath()}" alt="" width="10" height="10">${current_user.getName()} ${current_user.getSurname()}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/user">Личный кабинет</a>
-                            <a class="dropdown-item" href="/edit">Редактирование</a>
-                            <a class="dropdown-item" href="/corrections">Предложения правок</a>
-                            <a class="dropdown-item" href="/create_article">Добавить статью</a>
+                            <a class="dropdown-item" href="/user">Profile</a>
+                            <a class="dropdown-item" href="/edit">Edit</a>
+                            <a class="dropdown-item" href="/corrections">Corrections</a>
+                            <a class="dropdown-item" href="/create_article">Create article</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/logout">Выйти</a>
+                            <a class="dropdown-item" href="/logout">Log out</a>
                         </div>
                     </li>
                 </ul>

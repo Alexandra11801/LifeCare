@@ -22,6 +22,15 @@
         <url-pattern>/authorization</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>UserPageServlet</servlet-name>
+        <servlet-class>UserPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserPageServlet</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.css</url-pattern>

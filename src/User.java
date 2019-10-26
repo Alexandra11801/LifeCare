@@ -5,18 +5,17 @@ import java.io.InputStream;
 public class User {
 
 	private String name;
-	private String surmname;
+	private String surname;
 	private String password;
 	private String email;
-	private InputStream avatar;
-	private String imageName;
+	private String imagePath;
 
-	public User(String name, String surmname, String password, String email, InputStream avatar) {
+	public User(String name, String surname, String password, String email, String imagePath) {
 		this.name = name;
-		this.surmname = surmname;
+		this.surname = surname;
 		this.password = password;
 		this.email = email;
-		this.avatar = avatar;
+		this.imagePath = imagePath;
 	}
 
 	public String getName() {
@@ -27,12 +26,12 @@ public class User {
 		this.name = name;
 	}
 
-	public String getSurmname() {
-		return surmname;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setSurmname(String surmname) {
-		this.surmname = surmname;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	public String getPassword() {
@@ -51,19 +50,15 @@ public class User {
 		this.email = email;
 	}
 
-	public InputStream getAvatar() {
-		return avatar;
+	public boolean equals(User u){
+		return this.email.equals(u.email);
 	}
 
-	public void setAvatar(InputStream avatar) {
-		this.avatar = avatar;
+	public String getImagePath() {
+		return imagePath;
 	}
 
-	public String getImageName() {
-		return imageName;
-	}
-
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 }
