@@ -1,19 +1,19 @@
+package Servlets;
+
+import DAO.UserDAO;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
+import models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Map;
 import java.util.TreeMap;
 
-@WebServlet(name = "AuthorizationServlet")
+@WebServlet(name = "Servlets.AuthorizationServlet")
 @MultipartConfig
 public class AuthorizationServlet extends HttpServlet {
 
@@ -42,7 +42,7 @@ public class AuthorizationServlet extends HttpServlet {
 				response.addCookie(cookie);
 			}
 			session.setAttribute("current_user", user);
-			response.sendRedirect("http://localhost:8080/");
+			response.sendRedirect("http://localhost:8080/home");
 		}
 	}
 
@@ -52,6 +52,6 @@ public class AuthorizationServlet extends HttpServlet {
 		root.put("correct_password", request.getParameter("correct_password") == null ? true : Boolean.parseBoolean(request.getParameter("correct_password")));
 		root.put("user_exists", request.getParameter("user_exists") == null ? true : Boolean.parseBoolean(request.getParameter("user_exists")));
 		root.put("authorizated", false);
-		Helpers.render(request, response, "authorization.ftl", root);
+		helpers.Helpers.render(request, response, "authorization.ftl", root);
 	}
 }

@@ -1,5 +1,8 @@
+package Servlets;
+
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
+import models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +14,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
-@WebServlet(name = "UserPageServlet")
-public class UserPageServlet extends HttpServlet {
+@WebServlet(name = "MainPageServlet")
+public class MainPageServlet extends HttpServlet {
 
 	public void init(){
 		Configuration conf = new Configuration();
@@ -34,18 +37,9 @@ public class UserPageServlet extends HttpServlet {
 				request.getSession().setAttribute("current_user", cookie.getValue());
 			}
 		}
-		User user;
 		User current_user = (User)request.getSession().getAttribute("current_user");
-		if(request.getParameter("id") != null){
-			user = UserDAO.findUserById(Integer.parseInt(request.getParameter("id")));
-		}
-		else{
-			user = current_user;
-		}
-		root.put("user", user);
-		root.put("articles", ArticleDAO.allArticles(user));
 		root.put("authorizated", current_user != null);
 		root.put("current_user", current_user);
-		Helpers.render(request, response, "userpage.ftl", root);
+		helpers.Helpers.render(request, response,"main.ftl", root);
 	}
 }

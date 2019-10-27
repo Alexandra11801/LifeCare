@@ -1,3 +1,5 @@
+package models;
+
 public class Article {
 
 	private int user_id;

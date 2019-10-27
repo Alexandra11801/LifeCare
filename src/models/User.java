@@ -1,6 +1,4 @@
-import sun.security.util.Password;
-import java.awt.*;
-import java.io.InputStream;
+package models;
 
 public class User {
 

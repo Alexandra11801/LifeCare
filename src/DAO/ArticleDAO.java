@@ -1,3 +1,8 @@
+package DAO;
+
+import models.Article;
+import models.User;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

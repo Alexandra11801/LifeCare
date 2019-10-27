@@ -1,6 +1,7 @@
-import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
+package DAO;
+
+import models.User;
+
 import java.sql.*;
 
 public class UserDAO extends DAO{
@@ -68,6 +69,58 @@ public class UserDAO extends DAO{
 			e.printStackTrace();
 		}
 		return id;
+	}
+
+	public static void editName(User user, String name){
+		try{
+			PreparedStatement statement = connect().prepareStatement("UPDATE users SET name=? WHERE email=?");
+			statement.setString(1, name);
+			statement.setString(2, user.getEmail());
+			statement.execute();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		user.setName(name);
+	}
+
+	public static void editSurname(User user, String surname){
+		try{
+			PreparedStatement statement = connect().prepareStatement("UPDATE users SET surname=? WHERE email=?");
+			statement.setString(1, surname);
+			statement.setString(2, user.getEmail());
+			statement.execute();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		user.setSurname(surname);
+	}
+
+	public static void editEmail(User user, String email){
+		try{
+			PreparedStatement statement = connect().prepareStatement("UPDATE users SET email=? WHERE email=?");
+			statement.setString(1, email);
+			statement.setString(2, user.getEmail());
+			statement.execute();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		user.setEmail(email);
+	}
+
+	public static void editAvatar(User user, String imagePath){
+		try{
+			PreparedStatement statement = connect().prepareStatement("UPDATE users SET avatar=? WHERE email=?");
+			statement.setString(1, imagePath);
+			statement.setString(2, user.getEmail());
+			statement.execute();
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		user.setImagePath(imagePath);
 	}
 
 }
