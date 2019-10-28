@@ -49,7 +49,7 @@
                             <a class="dropdown-item" href="/user">Profile</a>
                             <a class="dropdown-item" href="/edit">Edit</a>
                             <a class="dropdown-item" href="/corrections">Corrections</a>
-                            <a class="dropdown-item" href="/create_article">Create article</a>
+                            <a class="dropdown-item" href="/new_article">Create article</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Log out</a>
                         </div>

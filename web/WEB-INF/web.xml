@@ -49,6 +49,15 @@
         <url-pattern>/edit</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>AddArticle</servlet-name>
+        <servlet-class>Servlets.AddArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddArticle</servlet-name>
+        <url-pattern>/new_article</url-pattern>
+    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.css</url-pattern>
