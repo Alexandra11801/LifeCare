@@ -18,7 +18,7 @@
                 <#else>
                     <input type="email" class="form-control" id="email" name="email" placeholder="email@domain.com">
                 </#if>
-                <div class="invalid-feedback">User with this email is already registered</div>
+                <div class="invalid-feedback">models.User with this email is already registered</div>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>

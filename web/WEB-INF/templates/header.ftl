@@ -23,7 +23,7 @@
 
 <div class="header container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Логотип</a>
+        <a class="navbar-brand" href="/home">Логотип</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,7 +43,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="${current_user.getImagePath()}" alt="" width="10" height="10">${current_user.getName()} ${current_user.getSurname()}
+                            <img src="${current_user.getImagePath()}" alt="" width="20" height="20">${current_user.getName()} ${current_user.getSurname()}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/user">Profile</a>

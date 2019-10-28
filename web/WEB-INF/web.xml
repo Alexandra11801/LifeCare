@@ -6,7 +6,7 @@
     
     <servlet>
         <servlet-name>RegistrationServlet</servlet-name>
-        <servlet-class>RegistrationServlet</servlet-class>
+        <servlet-class>Servlets.RegistrationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationServlet</servlet-name>
@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>AuthorizationServlet</servlet-name>
-        <servlet-class>AuthorizationServlet</servlet-class>
+        <servlet-class>Servlets.AuthorizationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AuthorizationServlet</servlet-name>
@@ -24,16 +24,37 @@
     
     <servlet>
         <servlet-name>UserPageServlet</servlet-name>
-        <servlet-class>UserPageServlet</servlet-class>
+        <servlet-class>Servlets.UserPageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserPageServlet</servlet-name>
         <url-pattern>/user</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>MainPageServlet</servlet-name>
+        <servlet-class>Servlets.MainPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainPageServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>EditingServlet</servlet-name>
+        <servlet-class>Servlets.EditingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditingServlet</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.css</url-pattern>
         <url-pattern>*.js</url-pattern>
+        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.jpeg</url-pattern>
+        <url-pattern>*.png</url-pattern>
     </servlet-mapping>
 </web-app>

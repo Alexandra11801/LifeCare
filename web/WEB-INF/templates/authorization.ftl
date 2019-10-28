@@ -10,7 +10,7 @@
                  <#else>
                     <input type="email" class="form-control is-invalid" id="email" name="email" placeholder="email@domain.com">
                  </#if>
-                 <div class="invalid-feedback">User with this email is not registered</div>
+                 <div class="invalid-feedback">models.User with this email is not registered</div>
             </div>
 
             <div class="form-group">
@@ -26,7 +26,7 @@
             <div class="remember-me-check">
                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="rememberMe">
                 <label class="form-check-label" for="defaultCheck1">
-                    Remember me
+                    Check me out
                 </label>
             </div>
 
