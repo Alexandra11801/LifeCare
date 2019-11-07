@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
-@WebServlet(name = "MainPageServlet")
 public class MainPageServlet extends HttpServlet {
 
 	public void init(){
@@ -31,14 +30,8 @@ public class MainPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, Object> root = new TreeMap<>();
 		response.setContentType("text/html");
-		Cookie[] cookies = request.getCookies();
-		for(Cookie cookie : cookies){
-			if(cookie.getName().equals("user")){
-				request.getSession().setAttribute("current_user", cookie.getValue());
-			}
-		}
 		User current_user = (User)request.getSession().getAttribute("current_user");
-		root.put("authorizated", current_user != null);
+		root.put("authorizated", request.getAttribute("authorizated"));
 		root.put("current_user", current_user);
 		helpers.Helpers.render(request, response,"main.ftl", root);
 	}

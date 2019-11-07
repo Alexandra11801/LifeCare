@@ -44,6 +44,13 @@
                 <input type="file" class="form-control" id="avatar" name="avatar">
             </div>
 
+            <div class="remember-me-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="rememberMe">
+                <label class="form-check-label" for="defaultCheck1">
+                    Check me out
+                </label>
+            </div>
+
             <div class="form-group">
                 <button type="submit" class="mt-2 btn btn-success">Registration</button>
             </div>

@@ -51,6 +51,11 @@ public class RegistrationServlet extends HttpServlet {
 			}
 			else {
 				User newUser = new User(name, surname, password, email, path);
+				if(Boolean.parseBoolean(request.getParameter("rememberMe"))){
+					Cookie cookie = new Cookie("user", Integer.toString(UserDAO.getId(newUser)));
+					cookie.setMaxAge(Integer.MAX_VALUE);
+					response.addCookie(cookie);
+				}
 				UserDAO.addUser(newUser);
 				session.setAttribute("current_user", newUser);
 				response.sendRedirect("http://localhost:8080/home");
