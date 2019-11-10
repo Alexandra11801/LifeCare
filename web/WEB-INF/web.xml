@@ -58,6 +58,69 @@
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ArticleServlet</servlet-name>
+        <servlet-class>Servlets.ArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ArticleServlet</servlet-name>
+        <url-pattern>/article</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LikeServlet</servlet-name>
+        <servlet-class>Servlets.LikeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LikeServlet</servlet-name>
+        <url-pattern>/like</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DislikeServlet</servlet-name>
+        <servlet-class>Servlets.DislikeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DislikeServlet</servlet-name>
+        <url-pattern>/dislike</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CorrectingServlet</servlet-name>
+        <servlet-class>Servlets.CorrectingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CorrectingServlet</servlet-name>
+        <url-pattern>/correct</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RevisionsServlet</servlet-name>
+        <servlet-class>Servlets.RevisionsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RevisionsServlet</servlet-name>
+        <url-pattern>/revisions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AcceptServlet</servlet-name>
+        <servlet-class>Servlets.AcceptServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AcceptServlet</servlet-name>
+        <url-pattern>/acceptRevision</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RejectServlet</servlet-name>
+        <servlet-class>Servlets.RejectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RejectServlet</servlet-name>
+        <url-pattern>/rejectRevision</url-pattern>
+    </servlet-mapping>
+    
     <filter>
         <filter-name>Filter</filter-name>
         <filter-class>Filter</filter-class>

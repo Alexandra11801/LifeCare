@@ -49,6 +49,7 @@ public class AuthorizationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, Object> root = new TreeMap<>();
 		response.setContentType("text/html");
+
 		root.put("correct_password", request.getParameter("correct_password") == null ? true : Boolean.parseBoolean(request.getParameter("correct_password")));
 		root.put("user_exists", request.getParameter("user_exists") == null ? true : Boolean.parseBoolean(request.getParameter("user_exists")));
 		root.put("authorizated", false);

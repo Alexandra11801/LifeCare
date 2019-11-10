@@ -2,6 +2,7 @@ package DAO;
 
 import models.User;
 
+import java.io.File;
 import java.sql.*;
 
 public class UserDAO extends DAO{
@@ -13,6 +14,9 @@ public class UserDAO extends DAO{
 			ResultSet res = statement.executeQuery("SELECT * FROM users WHERE id=" + id);
 			if(res.next()) {
 				user = new User(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6));
+			}
+			else{
+				user = new User("Anonymous", "", "", "", "uploads" + File.separator + "avatar.png");
 			}
 		}
 		catch (SQLException e){

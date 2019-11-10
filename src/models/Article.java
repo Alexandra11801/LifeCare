@@ -6,12 +6,16 @@ public class Article {
 	private String title;
 	private String text;
 	private String category;
+	private int likes;
+	private int dislikes;
 
-	public Article(int user_id, String title, String text, String category) {
+	public Article(int user_id, String title, String text, String category, int likes, int dislikes) {
 		this.user_id = user_id;
 		this.title = title;
 		this.text = text;
 		this.category = category;
+		this.likes = likes;
+		this.dislikes = dislikes;
 	}
 
 	public int getUser_id() {
@@ -44,5 +48,21 @@ public class Article {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public int getDislikes() {
+		return dislikes;
+	}
+
+	public void setDislikes(int dislikes) {
+		this.dislikes = dislikes;
 	}
 }
