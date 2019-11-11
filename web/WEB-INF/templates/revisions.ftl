@@ -36,9 +36,9 @@
                 },
                 dataType: "json",
                 success: function (msg) {
-                    document.getElementById(revisionId).parentNode.removeChild(revisionId);
                 }
             })
+            document.getElementById(revisionId).remove();
         }
 
         function reject(revisionId) {
@@ -49,9 +49,9 @@
                 },
                 dataType: "json",
                 success: function (msg) {
-                    document.getElementById(revisionId).parentNode.removeChild(revisionId);
                 }
             })
+            document.getElementById(revisionId).remove();
         }
     </script>
 </#macro>

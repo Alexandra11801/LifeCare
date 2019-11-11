@@ -135,4 +135,37 @@ public class ArticleDAO extends DAO {
 		}
 	}
 
+	public static ArrayList<Article> getByPattern(String pattern){
+		ArrayList<Article> articles = new ArrayList<>();
+		try{
+			PreparedStatement statement = connect().prepareStatement("SELECT * FROM articles WHERE LOWER(title) LIKE LOWER (?)");
+			statement.setString(1, "%" + pattern + "%");
+			ResultSet res = statement.executeQuery();
+			while(res.next()){
+				articles.add(new Article(res.getInt(2), res.getString(3), res.getString(4), res.getString(5), res.getInt(6), res.getInt(7)));
+			}
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		return articles;
+	}
+
+	public static ArrayList<Article> getByPatternWithCategory(String pattern, String category){
+		ArrayList<Article> articles = new ArrayList<>();
+		try{
+			PreparedStatement statement = connect().prepareStatement("SELECT * FROM articles WHERE LOWER(title) LIKE LOWER (?) AND category=?");
+			statement.setString(1, "%" + pattern + "%");
+			statement.setString(2, category);
+			ResultSet res = statement.executeQuery();
+			while(res.next()){
+				articles.add(new Article(res.getInt(2), res.getString(3), res.getString(4), res.getString(5), res.getInt(6), res.getInt(7)));
+			}
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		return articles;
+	}
+
 }

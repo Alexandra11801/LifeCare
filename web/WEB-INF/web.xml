@@ -121,6 +121,24 @@
         <url-pattern>/rejectRevision</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>Servlets.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>Servlets.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    
     <filter>
         <filter-name>Filter</filter-name>
         <filter-class>Filter</filter-class>

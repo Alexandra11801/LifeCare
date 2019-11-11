@@ -32,7 +32,7 @@ public class AuthorizationServlet extends HttpServlet {
 		if(user == null){
 			response.sendRedirect("http://localhost:8080/authorization?user_exists=false");
 		}
-		else if(!password.equals(user.getPassword())){
+		else if(!((Integer)password.hashCode()).toString().equals(user.getPassword())){
 			response.sendRedirect("http://localhost:8080/authorization?correct_password=false");
 		}
 		else{
