@@ -29,8 +29,9 @@ public class LogoutServlet extends HttpServlet {
 		request.getSession().setAttribute("current_user", null);
 		Cookie[] cookies = request.getCookies();
 		for(Cookie cookie : cookies){
-			if(cookie.getName().equals("current_user")){
+			if(cookie.getName().equals("user")){
 				cookie.setMaxAge(0);
+				response.addCookie(cookie);
 			}
 		}
 		response.sendRedirect("http://localhost:8080/home");

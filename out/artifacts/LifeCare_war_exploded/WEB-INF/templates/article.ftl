@@ -27,7 +27,7 @@
         </div>
 
         <div class="comment">
-            <form class="pt-5" method="post">
+            <form class="pt-5" method="post" accept-charset="utf-8">
 
                 <div class="form-group">
                     <textarea class="form-control" id="comm-text" name="comm-text" rows="3" name="text">

@@ -27,7 +27,7 @@ public class RegistrationServlet extends HttpServlet {
 	}
 
 	public boolean emailValid(String email){
-		Pattern pattern = Pattern.compile("([0-9]|[a-z]|[A-Z]|_|-)+@[a-z]+\\.[a-z]+");
+		Pattern pattern = Pattern.compile("([0-9]|[a-z]|[A-Z]|_|-|\\.)+@[a-z]+\\.[a-z]+");
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
@@ -71,12 +71,11 @@ public class RegistrationServlet extends HttpServlet {
 			}
 			else {
 				User newUser = new User(name, surname, ((Integer)password.hashCode()).toString(), email, path);
-				if(Boolean.parseBoolean(request.getParameter("rememberMe"))){
+				UserDAO.addUser(newUser);
+				if(request.getParameter("rememberMe") != null){
 					Cookie cookie = new Cookie("user", Integer.toString(UserDAO.getId(newUser)));
-					cookie.setMaxAge(Integer.MAX_VALUE);
 					response.addCookie(cookie);
 				}
-				UserDAO.addUser(newUser);
 				session.setAttribute("current_user", newUser);
 				response.sendRedirect("http://localhost:8080/home");
 			}
@@ -86,8 +85,8 @@ public class RegistrationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, Object> root = new TreeMap<>();
 		response.setContentType("text/html");
-		root.put("correct_password", request.getParameter("correct_password") == null ? true : Boolean.parseBoolean(request.getParameter("password_valid")));
-		root.put("password_valid", request.getParameter("correct_password") == null ? true : Boolean.parseBoolean(request.getParameter("correct_password")));
+		root.put("correct_password", request.getParameter("correct_password") == null ? true : Boolean.parseBoolean(request.getParameter("correct_password")));
+		root.put("password_valid", request.getParameter("password_valid") == null ? true : Boolean.parseBoolean(request.getParameter("password_valid")));
 		root.put("correct_email", request.getParameter("correct_email") == null ? true : Boolean.parseBoolean(request.getParameter("correct_email")));
 		root.put("user_exists", request.getParameter("user_exists") == null ? false : Boolean.parseBoolean(request.getParameter("user_exists")));
 		root.put("authorizated", false);

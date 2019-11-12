@@ -2,7 +2,7 @@
 
 <#macro content>
     <div class="container">
-        <form class="pt-3 mt-3 pb-4" method="post">
+        <form class="pt-3 mt-3 pb-4" method="post" accept-charset="utf-8">
 
             <input type="text" name="articleId" id="article" style="display: none" value="${articleId}">
 

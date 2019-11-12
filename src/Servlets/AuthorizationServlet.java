@@ -1,6 +1,7 @@
 package Servlets;
 
 import DAO.UserDAO;
+import com.sun.corba.se.impl.corba.CORBAObjectImpl;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
 import models.User;
@@ -36,9 +37,9 @@ public class AuthorizationServlet extends HttpServlet {
 			response.sendRedirect("http://localhost:8080/authorization?correct_password=false");
 		}
 		else{
-			if(Boolean.parseBoolean(request.getParameter("rememberMe"))){
+			if(request.getParameter("rememberMe") != null){
 				Cookie cookie = new Cookie("user", Integer.toString(UserDAO.getId(user)));
-				cookie.setMaxAge(Integer.MAX_VALUE);
+				cookie.setMaxAge(1000000000);
 				response.addCookie(cookie);
 			}
 			session.setAttribute("current_user", user);

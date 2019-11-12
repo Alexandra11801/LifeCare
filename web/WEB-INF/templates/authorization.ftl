@@ -10,7 +10,7 @@
                  <#else>
                     <input type="email" class="form-control is-invalid" id="email" name="email" placeholder="email@domain.com">
                  </#if>
-                 <div class="invalid-feedback">models.User with this email is not registered</div>
+                 <div class="invalid-feedback">User with this email is not registered</div>
             </div>
 
             <div class="form-group">
