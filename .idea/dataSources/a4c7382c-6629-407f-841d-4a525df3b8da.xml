@@ -97,8 +97,8 @@
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2019-10-22.16:43:10.578</IntrospectionTimestamp>
-      <IntrospectionStateNumber>585</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-11-10.22:38:15.696</IntrospectionTimestamp>
+      <IntrospectionStateNumber>673</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -144,7 +144,16 @@
       <HandlerId>335</HandlerId>
       <Type>index</Type>
     </access-method>
-    <sequence id="26" parent="19" name="articles_id_seq">
+    <sequence id="26" parent="19" name="users_id_seq">
+      <ObjectId>16447</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>593</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="27" parent="19" name="articles_id_seq">
       <ObjectId>16407</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>579</StateNumber>
@@ -153,7 +162,7 @@
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="27" parent="19" name="commentaries_id_seq">
+    <sequence id="28" parent="19" name="commentaries_id_seq">
       <ObjectId>16419</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>581</StateNumber>
@@ -162,7 +171,7 @@
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="28" parent="19" name="corrections_id_seq">
+    <sequence id="29" parent="19" name="corrections_id_seq">
       <ObjectId>16428</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>582</StateNumber>
@@ -171,19 +180,10 @@
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="29" parent="19" name="users_id_seq">
-      <ObjectId>16398</ObjectId>
-      <Owner>postgres</Owner>
-      <StateNumber>578</StateNumber>
-      <SequenceIdentity>1..2147483647</SequenceIdentity>
-      <BelongsToColumn>1</BelongsToColumn>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
-    </sequence>
     <table id="30" parent="19" name="articles">
       <ObjectId>16409</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>579</StateNumber>
+      <StateNumber>631</StateNumber>
     </table>
     <table id="31" parent="19" name="categories">
       <ObjectId>16416</ObjectId>
@@ -198,7 +198,7 @@
     <table id="33" parent="19" name="corrections">
       <ObjectId>16430</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>582</StateNumber>
+      <StateNumber>665</StateNumber>
     </table>
     <table id="34" parent="19" name="dislikes">
       <ObjectId>16443</ObjectId>
@@ -215,12 +215,17 @@
       <Owner>postgres</Owner>
       <StateNumber>583</StateNumber>
     </table>
-    <table id="37" parent="19" name="users">
-      <ObjectId>16400</ObjectId>
+    <table id="37" parent="19" name="rated">
+      <ObjectId>16465</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>578</StateNumber>
+      <StateNumber>642</StateNumber>
     </table>
-    <column id="38" parent="30" name="id">
+    <table id="38" parent="19" name="users">
+      <ObjectId>16449</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>594</StateNumber>
+    </table>
+    <column id="39" parent="30" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -229,37 +234,72 @@
       <TypeId>23</TypeId>
       <SequenceName>articles_id_seq</SequenceName>
     </column>
-    <column id="39" parent="30" name="author">
+    <column id="40" parent="30" name="author">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>579</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="40" parent="30" name="title">
+    <column id="41" parent="30" name="title">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <StateNumber>579</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="41" parent="30" name="text">
+    <column id="42" parent="30" name="text">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <StateNumber>579</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="42" parent="30" name="category">
+    <column id="43" parent="30" name="category">
       <Position>5</Position>
       <DataType>varchar(30)|0s</DataType>
       <StateNumber>579</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="43" parent="31" name="category">
+    <column id="44" parent="30" name="likes">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>631</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="45" parent="30" name="dislikes">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>631</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="46" parent="30" name="articles_pk">
+      <ObjectId>16463</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="47" parent="30" name="articles_pk">
+      <ObjectId>16464</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>articles_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="48" parent="31" name="category">
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
-      <StateNumber>580</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>627</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="44" parent="32" name="id">
+    <index id="49" parent="31" name="category_pk">
+      <ObjectId>16459</ObjectId>
+      <ColNames>category</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="50" parent="31" name="category_pk">
+      <ObjectId>16460</ObjectId>
+      <ColNames>category</ColNames>
+      <UnderlyingIndexName>category_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="32" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -268,37 +308,37 @@
       <TypeId>23</TypeId>
       <SequenceName>commentaries_id_seq</SequenceName>
     </column>
-    <column id="45" parent="32" name="article">
+    <column id="52" parent="32" name="article">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>581</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="46" parent="32" name="sender">
+    <column id="53" parent="32" name="sender">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>581</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="47" parent="32" name="receiver">
+    <column id="54" parent="32" name="receiver">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>581</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="48" parent="32" name="text">
+    <column id="55" parent="32" name="text">
       <Position>5</Position>
       <DataType>varchar(500)|0s</DataType>
       <StateNumber>581</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="49" parent="32" name="date">
+    <column id="56" parent="32" name="date">
       <Position>6</Position>
       <DataType>date|0s</DataType>
       <StateNumber>581</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="50" parent="33" name="id">
+    <column id="57" parent="33" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -307,98 +347,121 @@
       <TypeId>23</TypeId>
       <SequenceName>corrections_id_seq</SequenceName>
     </column>
-    <column id="51" parent="33" name="article">
+    <column id="58" parent="33" name="article">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>582</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="52" parent="33" name="author">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>582</StateNumber>
-      <TypeId>23</TypeId>
+    <column id="59" parent="33" name="description">
+      <Position>5</Position>
+      <DataType>varchar(1000)|0s</DataType>
+      <StateNumber>672</StateNumber>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="53" parent="33" name="text">
-      <Position>4</Position>
+    <column id="60" parent="33" name="text">
+      <Position>6</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>582</StateNumber>
+      <StateNumber>673</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="54" parent="34" name="article">
+    <column id="61" parent="34" name="article">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>585</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="55" parent="34" name="sender">
+    <column id="62" parent="34" name="sender">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>585</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="56" parent="35" name="article">
+    <column id="63" parent="35" name="article">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>584</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="57" parent="35" name="sender">
+    <column id="64" parent="35" name="sender">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>584</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="58" parent="36" name="correction">
+    <column id="65" parent="36" name="correction">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>583</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="59" parent="36" name="text">
+    <column id="66" parent="36" name="text">
       <Position>2</Position>
       <DataType>varchar(500)|0s</DataType>
       <StateNumber>583</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="60" parent="37" name="id">
+    <column id="67" parent="37" name="user_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>642</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="68" parent="37" name="article_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>642</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="69" parent="38" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>578</StateNumber>
+      <StateNumber>593</StateNumber>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
       <SequenceName>users_id_seq</SequenceName>
     </column>
-    <column id="61" parent="37" name="name">
+    <column id="70" parent="38" name="name">
       <Position>2</Position>
-      <DataType>varchar(25)|0s</DataType>
-      <StateNumber>578</StateNumber>
+      <DataType>varchar(30)|0s</DataType>
+      <StateNumber>593</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="62" parent="37" name="surname">
+    <column id="71" parent="38" name="surname">
       <Position>3</Position>
-      <DataType>varchar(25)|0s</DataType>
-      <StateNumber>578</StateNumber>
+      <DataType>varchar(30)|0s</DataType>
+      <StateNumber>593</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="63" parent="37" name="password">
+    <column id="72" parent="38" name="password">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
-      <StateNumber>578</StateNumber>
+      <StateNumber>593</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="64" parent="37" name="email">
+    <column id="73" parent="38" name="email">
       <Position>5</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <StateNumber>578</StateNumber>
+      <DataType>varchar(60)|0s</DataType>
+      <StateNumber>593</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="65" parent="37" name="avatar">
+    <column id="74" parent="38" name="avatar">
       <Position>6</Position>
-      <DataType>bytea|0s</DataType>
-      <StateNumber>578</StateNumber>
-      <TypeId>17</TypeId>
+      <DataType>varchar(110)|0s</DataType>
+      <StateNumber>607</StateNumber>
+      <TypeId>1043</TypeId>
     </column>
+    <index id="75" parent="38" name="users_pk">
+      <ObjectId>16461</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="76" parent="38" name="users_pk">
+      <ObjectId>16462</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>users_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>
