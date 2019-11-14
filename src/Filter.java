@@ -23,12 +23,14 @@ public class Filter implements javax.servlet.Filter {
 		User current_user = (User)((HttpServletRequest)req).getSession().getAttribute("current_user");
 		if(current_user == null) {
 			Cookie[] cookies = ((HttpServletRequest) req).getCookies();
-			for (Cookie cookie : cookies) {
-				System.out.println(cookie.getName() + " " + cookie.getValue());
-				if (cookie.getName().equals("user")) {
-					current_user = UserDAO.findUserById(Integer.parseInt(cookie.getValue()));
-					System.out.println("authorizated");
-					((HttpServletRequest) req).getSession().setAttribute("current_user", current_user);
+			if(cookies != null) {
+				for (Cookie cookie : cookies) {
+					System.out.println(cookie.getName() + " " + cookie.getValue());
+					if (cookie.getName().equals("user")) {
+						current_user = UserDAO.findUserById(Integer.parseInt(cookie.getValue()));
+						System.out.println("authorizated");
+						((HttpServletRequest) req).getSession().setAttribute("current_user", current_user);
+					}
 				}
 			}
 		}

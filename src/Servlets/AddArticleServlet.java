@@ -37,7 +37,7 @@ public class AddArticleServlet extends HttpServlet {
 		String articleText = request.getParameter("text");
 		Article article = new Article(UserDAO.getId(author), title, articleText, category, 0, 0);
 		ArticleDAO.addArticle(article);
-		response.sendRedirect("http://localhost:8080/articles?article=" + article.getTitle());
+		response.sendRedirect("http://localhost:8080/article?article=" + article.getTitle());
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

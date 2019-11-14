@@ -18,10 +18,10 @@
             </div>
             <#if authorizated == true>
                 <div class="col">
-                    <div class="like-dislike text-right">
-                        <button class="btn-sm btn-success" id="likes" onclick="like()">+ ${article.getLikes()}</button>
-                        <button class="btn-sm btn-danger" id="dislikes" onclick="dislike()">- ${article.getDislikes()}</button>
-                    </div>
+                        <div class="like-dislike text-right">
+                            <button class="btn-sm btn-success" id="likes" onclick="like()">+ ${article.getLikes()}</button>
+                            <button class="btn-sm btn-danger" id="dislikes" onclick="dislike()">- ${article.getDislikes()}</button>
+                        </div>
                 </div>
             </#if>
         </div>
@@ -78,6 +78,7 @@
                     "user": "${current_user.getEmail()}"
                 },
                 dataType: "json",
+                scriptCharset: "utf-8",
                 success: function (msg) {
                     $("#likes").text("+" + msg.like);
                 }
@@ -92,6 +93,7 @@
                     "user": "${current_user.getEmail()}"
                 },
                 dataType: "json",
+                scriptCharset: "utf-8",
                 success: function (msg) {
                     $("#dislikes").text("-" + msg.dislike);
                 }

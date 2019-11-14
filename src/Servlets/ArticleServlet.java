@@ -47,7 +47,7 @@ public class ArticleServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, Object> root = new TreeMap<>();
-		response.setContentType("text/html");
+		response.setContentType("text/html; charset=UTF-8");
 		User current_user = (User)request.getSession().getAttribute("current_user");
 		String title = request.getParameter("article");
 		Article article = ArticleDAO.findArticleByTitle(title);

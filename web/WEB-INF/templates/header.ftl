@@ -23,7 +23,6 @@
 
 <body>
 
-
 <div class="header container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/home">LifeCare</a>
@@ -47,6 +46,9 @@
         <#else>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search">Search</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="${current_user.getImagePath()}" alt="" width="20" height="20">${current_user.getName()} ${current_user.getSurname()}
